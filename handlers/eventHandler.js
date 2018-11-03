@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports = Bot => {
+module.exports = client => {
     let events = fs.readdirSync('./events').
         filter(file => !fs.statSync(path.resolve('./events/', file)).isDirectory()).
         filter(file => file.endsWith('.js'));
@@ -10,10 +10,10 @@ module.exports = Bot => {
         event = event.replace(/\.js$/i, '');
 
         if (event === 'ready') {
-            Bot.on(event, () => require(path.resolve('./events', event + './js')(Bot)));
+            client.on(event, () => (require(path.resolve('./events', event))(client)));
         }
         else {
-            Bot.on(event, require(path.resolve('./events', event)));
+            client.on(event, require(path.resolve('./events', event)));
         }
     }
 }
