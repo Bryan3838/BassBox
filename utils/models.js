@@ -145,5 +145,16 @@ module.exports = (Sequelize, database) => {
             allowNull: false,
             defaultValue: false
         }
-    })
+    });
+
+    // Associations
+    Guild.Items = Guild.hasMany(Items, {
+        foreignKey: 'guildID',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+    });
+    
+    database.sync();
+
+    return database.models();
 }
