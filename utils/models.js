@@ -147,6 +147,22 @@ module.exports = (Sequelize, database) => {
         }
     });
 
+    const Items = database.define('items', {
+        userID: {
+            type: Sequelize.STRING,
+            allowNull: false,
+            unique: 'guildMember'
+        },
+        guildID: {
+            type: Sequelize.STRING,
+            allowNull: false,
+            unique: 'guildMember'
+        },
+        custom: {
+            type: Sequelize.JSON
+        }
+    });
+
     // Associations
     Guild.Items = Guild.hasMany(Items, {
         foreignKey: 'guildID',
@@ -156,5 +172,5 @@ module.exports = (Sequelize, database) => {
     
     database.sync();
 
-    return database.models();
+    return database.models;
 }

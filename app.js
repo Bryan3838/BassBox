@@ -10,6 +10,8 @@ const client = new Discord.Client();
 client.configurations = YAML.parse(configurationsFile);
 client.credentials = YAML.parse(credentialsFile);
 
+client.package = require('./package.json');
+
 client.log = require('./handlers/logHandler');
 
 const Sequelize = require('sequelize');
