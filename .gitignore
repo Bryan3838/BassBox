@@ -1,3 +1,4 @@
 node_modules
 *.yaml
 data/bot.db
+package-lock.json
