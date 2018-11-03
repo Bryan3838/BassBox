@@ -1,0 +1,31 @@
+{
+  "name": "bassbox",
+  "version": "1.0.0",
+  "description": "A multi-ourpose discord bot.",
+  "main": "app.js",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "discord.js": "^11.4.2",
+    "sequelize": "^4.41.0",
+    "sqlite3": "^4.0.3",
+    "systeminformation": "^3.45.9",
+    "yaml": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bryan3838/BassBox.git"
+  },
+  "keywords": [
+    "discord.js"
+  ],
+  "author": "Bryan Tran <bryantran78@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bryan3838/BassBox/issues"
+  },
+  "homepage": "https://github.com/Bryan3838/BassBox#readme"
+}
