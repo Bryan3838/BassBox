@@ -8,7 +8,7 @@ exports.exec = async function (client, message, args) {
         let cpu = await si.cpu();
         cpu = `${cpu.manufacturer} ${cpu.brand} ${cpu.manufacturer} @${cpu.speed}GHz`
 
-        let version = `Discord.js: ${client.package.dependencies['discord.js'].version}\nNode.js: ${await si.versions().then(data => data.node)}`
+        let version = `Discord.js: ${message.client.package.dependencies['discord.js'].version}\nNode.js: ${await si.versions().then(data => data.node)}`
 
         let time = await message.client.uptime;
         const s = Math.floor(time / 1000 % 60);
@@ -18,6 +18,7 @@ exports.exec = async function (client, message, args) {
   
         time = `${d === 0 ? `` : `${d}d `}${h === 0 ? `` : `${h}h `}${m === 0 ? `` : `${m}m `}${s}s`;
         let embed = new RichEmbed()
+            .setAuthor(`${message.client.user.username} Status`, message.client.user.avatarURL)
             .setColor('#36393f')
             .addField(':map: Servers', `\`\`\`js\n${message.client.guilds.size}\n\`\`\``, true)
             .addField(':grinning: Users', `\`\`\`js\nUsers: ${message.client.users.size}\n\`\`\``, true)
@@ -29,7 +30,7 @@ exports.exec = async function (client, message, args) {
             .addField(':computer: CPU', `\`\`\`js\n${cpu}\n\`\`\``, true)
             .attachFile('./images/Gradient.jpg')
             .setImage('attachment://Gradient.jpg')
-            .setFooter(`Requested by: ${message.author.username}`)
+            .setFooter(`Requested by: ${message.author.username}`, message.author.avatarURL)
             .setTimestamp();
         message.channel.send({ embed });
         
@@ -38,9 +39,9 @@ exports.exec = async function (client, message, args) {
     }
 }
 exports.help = {
-    "name": "info"
+    "name": "status"
 }
 
 exports.config = {
-    "aliases": ["stats", "status"]
+    "aliases": []
 }
