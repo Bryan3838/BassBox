@@ -66,7 +66,7 @@ module.exports = async client => {
     client.log.console(COLOR`\n{blue [${client.user.username}]:} I'm ready!\n`);
 
     client.log.console(COLOR`{green [  SERVERS]:} ${client.guilds.size}`);
-    client.log.console(COLOR`{green [   PREFIX]:} ${client.configurations.prefix.join(' ')}`);
+    client.log.console(COLOR`{green [   PREFIX]:} ${client.configurations.prefix}`);
     client.log.console(COLOR`{green [ COMMANDS]:} ${client.commands.size}`);
     client.log.console(COLOR`{green [BOOT TIME]:} ${bootTime}s`);
     

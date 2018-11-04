@@ -3,7 +3,7 @@ const fs = require('fs');
 const YAML = require('yaml');
 
 const configurationsFile = fs.readFileSync('./settings/configurations.yaml', 'utf8');
-const { prefix } = YAML.parse(configurationsFile);
+const prefix = YAML.parse(configurationsFile).prefix;
 
 module.exports = (Sequelize, database) => {
     // Models
@@ -36,14 +36,14 @@ module.exports = (Sequelize, database) => {
             type: Sequelize.BLOB
         },
         prefix: {
-            type: Sequelize.JSON,
+            type: Sequelize.STRING,
             allowNull: false,
-            defaultValue: prefix ? [].concat(prefix) : [ '!' ]
+            defaultValue: prefix
         },
         greet: {
             type: Sequelize.STRING
         },
-            greetMessage: {
+        greetMessage: {
             type: Sequelize.BLOB
         },
         greetTimeout: {
@@ -66,7 +66,7 @@ module.exports = (Sequelize, database) => {
             type: Sequelize.STRING,
             unique: true
         },
-            musicVoiceChannel: {
+        musicVoiceChannel: {
             type: Sequelize.STRING,
             unique: true
         },
@@ -80,10 +80,6 @@ module.exports = (Sequelize, database) => {
         },
         selfAssignableRoles: {
             type: Sequelize.JSON,
-            unique: true
-        },
-        streamerRole: {
-            type: Sequelize.STRING,
             unique: true
         },
         filterInvites: {
@@ -128,7 +124,7 @@ module.exports = (Sequelize, database) => {
             type: Sequelize.STRING,
             unique: true
         },
-            moderationLog: {
+        moderationLog: {
             type: Sequelize.STRING,
             unique: true
         },
