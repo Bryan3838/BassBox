@@ -1,14 +1,16 @@
-const color = require('chalk');
+const COLOR = require('chalk');
 
 const handleCommand = require('../handlers/commandHandler');
-const handleInvite = require('../filters/inviteFilter.js');
+const filterInvite = require('../filters/inviteFilter.js');
 module.exports = async message => {
     try {
         if (message.author.bot) return;
 
-        handleInvite(message);
+        if (message.guild) {
+            if (await filterInvite(message)) return;
 
-        handleCommand(message);
+            handleCommand(message);
+        }
     } catch (err) {
         message.client.log.error(err);
     }
