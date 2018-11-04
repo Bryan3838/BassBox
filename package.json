@@ -1,7 +1,7 @@
 {
   "name": "bassbox",
   "version": "1.0.0",
-  "description": "A multi-ourpose discord bot.",
+  "description": "A multi-purpose discord bot.",
   "main": "app.js",
   "dependencies": {
     "chalk": "^2.4.1",
