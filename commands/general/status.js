@@ -8,7 +8,7 @@ exports.exec = async function (client, message, args) {
         let cpu = await si.cpu();
         cpu = `${cpu.manufacturer} ${cpu.brand} ${cpu.manufacturer} @${cpu.speed}GHz`
 
-        let version = `Discord.js: ${message.client.package.dependencies['discord.js'].version}\nNode.js: ${await si.versions().then(data => data.node)}`
+        let version = `Discord.js: ${message.client.package.dependencies['discord.js'].replace('^', '')}\nNode.js: ${await si.versions().then(data => data.node)}`
 
         let time = await message.client.uptime;
         const s = Math.floor(time / 1000 % 60);
