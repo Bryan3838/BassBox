@@ -2,8 +2,21 @@ const COLOR = require('chalk');
 
 module.exports = async message => {
     try {
-        //temporary
-        let prefix = '!';
+        let guildModel = await message.client.database.models.guild.findOne({
+            attributes: [ 'enabled', 'prefix', 'musicTextChannel', 'musicVoiceChannel', 'musicMasterRole', 'disabledCommands' ],
+            where: {
+               guildID: message.guild.id
+            }
+        });
+
+        if (!guildModel.enabled) return;
+
+        // Add guild's prefix to the discord.js guild object to minimize database reads.
+        if (!message.guild.prefix) {
+            message.guild.prefix = guildModel.dataValues.prefix;
+        }
+    
+        let prefix = message.guild.prefix;
 
         if (!message.content.startsWith(prefix)) return;
 
