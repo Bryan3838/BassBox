@@ -1,9 +1,19 @@
 const color = require('chalk');
 const { RichEmbed } = require('discord.js');
-//test
+
 module.exports = async message => {
     try {
         if (message.member && message.member.hasPermission('MANAGE_GUILD')) return;
+
+        let guildModel = await message.client.database.models.guild.findOne({
+            attributes: [ 'guildID' ],
+            where: {
+                guildID: message.guild.id,
+                filterInvites: true
+            }
+        });
+
+        if (guildModel) return;
 
         if (hasDiscordInvite(message.content)) {
             return deleteInvite(message);
