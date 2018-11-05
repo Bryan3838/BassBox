@@ -1,19 +1,19 @@
 
 const { RichEmbed } = require('discord.js');
 
-exports.exec = function (client, message, args) {
+exports.exec = async function (client, message, args) {
     try {
         let ping = new Date();
 
         let embed = new RichEmbed()
             .setColor('#36393f')
             .setTitle(`:ping_pong: Ping!`)
-        message.channel.send({ embed }).then(resultMessage =>{
+        await message.channel.send({ embed }).then(async resultMessage =>{
             let pong = Math.floor(new Date() - ping);
             embed = new RichEmbed()
                 .setColor('#36393f')
                 .setTitle(`:ping_pong: Pong! \`${pong}ms\``)
-            resultMessage.edit({ embed });
+            await resultMessage.edit({ embed });
         });
         
     } catch (err) {
@@ -22,9 +22,16 @@ exports.exec = function (client, message, args) {
 }
 
 exports.help = {
-    "name": "ping"
+    name:'ping',
+    description: '',
+    userTextPermission: '',
+    userVoicePermission: '',
+    usage: '',
+    example: [],
 }
 
 exports.config = {
-    "aliases": []
+    aliases: [],
+    enabled: true,
+    argsDefinitions: {}
 }

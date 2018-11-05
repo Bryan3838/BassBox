@@ -32,16 +32,23 @@ exports.exec = async function (client, message, args) {
             .setImage('attachment://Gradient.jpg')
             .setFooter(`Requested by: ${message.author.username}`, message.author.avatarURL)
             .setTimestamp();
-        message.channel.send({ embed });
+        await message.channel.send({ embed });
         
     } catch (err) {
         message.client.log.error(err);
     }
 }
 exports.help = {
-    "name": "status"
+    name: 'status',
+    description: '',
+    userTextPermission: '',
+    userVoicePermission: '',
+    usage: '',
+    example: [],
 }
 
 exports.config = {
-    "aliases": []
+    aliases: [],
+    enabled: true,
+    argsDefinitions: {}
 }

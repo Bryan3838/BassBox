@@ -22,9 +22,16 @@ exports.exec = async function (client, message, args) {
 }
 
 exports.help = {
-    "name": "invite"
+    name: 'invite',
+    description: '',
+    userTextPermission: '',
+    userVoicePermission: '',
+    usage: '',
+    example: [],
 }
 
 exports.config = {
-    "aliases": ["inv"]
+    aliases: ['inv'],
+    enabled: true,
+    argsDefinitions: {}
 }
