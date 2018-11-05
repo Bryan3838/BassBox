@@ -26,11 +26,15 @@ module.exports = async message => {
         let cmd;
         if (message.client.commands.has(command)) {
             cmd = message.client.commands.get(command);
-        }
-        else if (message.client.aliases.has(command)) {
+        } else if (message.client.aliases.has(command)) {
             cmd = message.client.commands.get(message.client.aliases.get(command).toLowerCase());
-        }
-        else return;
+        } else return;
+
+        /* TODO:
+         *   - Add user command cooldown if command has ran successfully.
+         *   - Add command args parse and handler.
+         *      - Add command error handler.
+         */
 
         cmd.exec(message.client, message, args);
     } catch (e) {
