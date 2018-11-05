@@ -36,6 +36,8 @@ client.database.authenticate().then(() => {
     client.commands = modules.commands;
     client.aliases = modules.aliases;
 
+    client.help = {};
+
     client.login(client.credentials.token).then(() => {
 
     });
