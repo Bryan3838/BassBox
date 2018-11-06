@@ -33,5 +33,5 @@ exports.help = {
 exports.config = {
     aliases: ['inv'],
     enabled: true,
-    argsDefinitions: {}
+    argsDefinitions: []
 }

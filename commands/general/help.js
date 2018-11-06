@@ -49,7 +49,7 @@ exports.exec = async function (client, message, args) {
                 .addField('Moderation', moderation)
                 .addField('Music', music)
                 .addField('Settings', settings)
-                .setFooter(`commands: ${message.client.commands.size} | Prefix: | Took ${loadTime}ms`, message.author.displayAvatarURL)
+                .setFooter(`commands: ${message.client.commands.size} • Server Prefix: ${message.guild.prefix} • Took ${loadTime}ms`, message.author.displayAvatarURL)
             await message.author.send({ embed });
             message.client.help.commands = { embed };
 
@@ -87,5 +87,7 @@ exports.help = {
 exports.config = {
     aliases: [],
     enabled: true,
-    argsDefinitions: {}
+    argsDefinitions: [
+        {name: 'command', type: String, optional: true}
+    ]
 }

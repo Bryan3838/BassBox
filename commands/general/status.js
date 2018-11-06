@@ -50,5 +50,5 @@ exports.help = {
 exports.config = {
     aliases: [],
     enabled: true,
-    argsDefinitions: {}
+    argsDefinitions: []
 }
