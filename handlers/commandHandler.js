@@ -21,7 +21,8 @@ module.exports = async message => {
 
         if (!message.content.startsWith(prefix)) return;
 
-        let args = message.content.split(' ');
+        let args = message.content.trim().replace(/ +/g, ' ').split(' ');
+        console.log(args)
         let command = args.shift().slice(prefix.length).toLowerCase();
 
         if (message.client.commands.has(command)) {
