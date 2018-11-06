@@ -1,0 +1,26 @@
+const fs = require('fs');
+const path = require('path');
+const COLOR = require('chalk');
+const { RichEmbed } = require('discord.js');
+
+exports.exec = async function (client, message, args) {
+    if (args.missing) return message.client.emit('commandUsage', message, message.client.command, args.missing);
+}
+
+exports.help = {
+    name: 'test',
+    description: '',
+    userTextPermission: '',
+    userVoicePermission: '',
+    usage: '',
+    example: [],
+}
+
+exports.config = {
+    aliases: [],
+    enabled: true,
+    argsDefinitions: [
+        {name: 'user', type: String, optional: false},
+        {name: 'time', type: Number, optional: true}
+    ]
+}
