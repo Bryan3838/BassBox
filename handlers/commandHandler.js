@@ -1,4 +1,5 @@
 const COLOR = require('chalk');
+const parseArgs = require('../methods/parseArgs')
 
 module.exports = async message => {
     try {
@@ -23,11 +24,10 @@ module.exports = async message => {
         let args = message.content.split(' ');
         let command = args.shift().slice(prefix.length).toLowerCase();
 
-        let cmd;
         if (message.client.commands.has(command)) {
-            cmd = message.client.commands.get(command);
+            message.client.command = message.client.commands.get(command);
         } else if (message.client.aliases.has(command)) {
-            cmd = message.client.commands.get(message.client.aliases.get(command).toLowerCase());
+            message.client.command = message.client.commands.get(message.client.aliases.get(command).toLowerCase());
         } else return;
 
         /* TODO:
@@ -36,7 +36,7 @@ module.exports = async message => {
          *      - Add command error handler.
          */
 
-        cmd.exec(message.client, message, args);
+        await message.client.command.exec(message.client, message, await parseArgs(message.client.commands.get(command), args));
     } catch (e) {
         process.stdout.write(`${COLOR.red('[Error]')} commandHandler: ${e}`);
     }
