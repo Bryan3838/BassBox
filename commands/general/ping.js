@@ -24,10 +24,10 @@ exports.exec = async function (client, message, args) {
 exports.help = {
     name:'ping',
     description: '',
-    userTextPermission: '',
-    userVoicePermission: '',
+    userTextPermission: [],
+    userVoicePermission: [],
     usage: '',
-    example: [],
+    examples: []
 }
 
 exports.config = {

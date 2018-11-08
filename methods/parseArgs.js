@@ -7,9 +7,9 @@ module.exports = async (command, args) => {
         if (!argsDefinitions[i].optional && !args[i]) {
             missingArgs.push(argsDefinitions[i].name);
         }
-        parsed[argsDefinitions[i].name] = args[1];
+        parsed[argsDefinitions[i].name] = args[i];
     }
-
+    
     if (missingArgs.length > 0) {
         parsed['missing'] = missingArgs;
     } else parsed['missing'] = false;

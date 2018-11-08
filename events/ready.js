@@ -34,7 +34,7 @@ module.exports = async client => {
         attributes: [ 'guildID' ]
     });
     guilds = guilds.map(guild => guild.guildID);
-
+    
     /*
      * Add guilds to the DB which was added Client when it was offline.
      */

@@ -10,17 +10,18 @@ exports.exec = async function (client, message, args) {
 exports.help = {
     name: 'test',
     description: '',
-    userTextPermission: '',
-    userVoicePermission: '',
+    userTextPermission: [],
+    userVoicePermission: [],
     usage: '',
-    example: [],
+    examples: []
 }
 
 exports.config = {
     aliases: [],
     enabled: true,
     argsDefinitions: [
-        {name: 'user', type: String, optional: false},
-        {name: 'time', type: Number, optional: true}
+        {name: 'user', type: String, optional: false, repeating: false},
+        {name: 'time', type: Number, optional: true, repeating: false},
+        {name: 'reason', type: String, optional: true, repeating: false}
     ]
 }

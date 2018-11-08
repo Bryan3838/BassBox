@@ -5,12 +5,13 @@ const { RichEmbed } = require('discord.js');
 
 exports.exec = async function (client, message, args) {
     try {
+        
         if (args.command) {
-            // parseExample method
+
             let embed = new RichEmbed()
-                .setTitle(message.client.command.help.name')
+                .setTitle(args.command)
                 .setColor('#36393f')
-                .setDescription(' temp ')
+                .setDescription((message.client.command.help.examples ? '' : message.guild.prefix) + message.client.command.help.examples.join(` ${message.guild.prefix}`))
             message.channel.send({ embed });
         } else {
         
@@ -87,16 +88,16 @@ exports.exec = async function (client, message, args) {
 exports.help = {
     name: 'help',
     description: '',
-    userTextPermission: '',
-    userVoicePermission: '',
+    userTextPermission: [],
+    userVoicePermission: [],
     usage: '',
-    example: [],
+    examples: ['help ping']
 }
 
 exports.config = {
     aliases: [],
     enabled: true,
     argsDefinitions: [
-        {name: 'command', type: String, optional: true}
+        {name: 'command', type: String, optional: true, repeating: false}
     ]
 }

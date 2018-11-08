@@ -41,10 +41,10 @@ exports.exec = async function (client, message, args) {
 exports.help = {
     name: 'status',
     description: '',
-    userTextPermission: '',
-    userVoicePermission: '',
+    userTextPermission: [],
+    userVoicePermission: [],
     usage: '',
-    example: [],
+    examples: []
 }
 
 exports.config = {
