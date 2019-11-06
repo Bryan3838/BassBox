@@ -7,7 +7,7 @@
     "chalk": "^2.4.1",
     "discord.js": "^11.4.2",
     "path": "^0.12.7",
-    "sequelize": "^4.41.0",
+    "sequelize": "^5.21.2",
     "sqlite3": "^4.0.3",
     "systeminformation": "^3.45.9",
     "yaml": "^1.0.0"
